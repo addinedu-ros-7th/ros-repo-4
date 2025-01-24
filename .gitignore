@@ -172,3 +172,7 @@ cython_debug/
 
 /.vscode
 .DS_Store
+
+# Ai Model files
+*.pt
+*.pth
