@@ -4,7 +4,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from ultralytics import YOLO
 import cv2
 import numpy as np
-from io import BytesIO
 import requests
 
 # FastAPI 서버 초기화
@@ -20,10 +19,14 @@ app.add_middleware(
 )
 
 # YOLO 모델 로드
-object_model = YOLO("yolov8n.pt")
+try:
+    object_model = YOLO("yolov8n.pt")
+    print("YOLO 모델 로드 성공")
+except Exception as e:
+    print(f"YOLO 모델 로드 실패: {e}")
 
-# 클라이언트 서버 URL (엔드포인트 수정 필요)
-CLIENT_SERVER_URL = "http://192.168.35.233:8001/receive-results"
+# 클라이언트 서버 URL
+CLIENT_SERVER_URL = "http://192.168.35.207:8001/receive-results"
 
 def send_results_to_client_server(frame_results):
     """
@@ -48,6 +51,7 @@ async def inference(video: UploadFile = File(...)):
     클라이언트 서버로부터 영상을 수신받아 YOLO 모델로 추론 수행
     """
     try:
+        # 영상 데이터를 읽고 프레임 변환
         video_bytes = await video.read()
         np_arr = np.frombuffer(video_bytes, np.uint8)
         frame = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
@@ -77,3 +81,7 @@ async def inference(video: UploadFile = File(...)):
 @app.get("/")
 def read_root():
     return {"message": "AI Inference Server is Running"}
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="192.168.35.207", port=8000)
