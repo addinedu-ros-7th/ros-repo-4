@@ -3,84 +3,95 @@ import select
 import numpy as np
 import cv2
 import requests
-import time
+import json
 
-# UDP 설정
+# ✅ UDP 설정
 UDP_IP = "192.168.0.9"
 UDP_PORT = 9506
 
-# TorchServe 설정
-TORCHSERVE_URL = "http://localhost:8080/predictions/target_detector"
+# ✅ TCP 설정
+MAIN_ADDR = "192.168.0.8"
+MAIN_PORT = 8081
+
+# ✅ TorchServe 설정 (두 모델 동시 실행)
+MODEL_URLS = {
+    "target": "http://localhost:8080/predictions/target_detector",
+    "fire": "http://localhost:8080/predictions/fire_detector"
+}
+
 HEADERS = {
-    "Authorization": "Bearer gdwW71wG",
+    "Authorization": "Bearer borSUIIE",  
     "Content-Type": "image/jpeg"
 }
 
-# UDP 소켓 초기화
+def send_tcp_message(messages):
+    """ 🔥 TCP로 탐지 결과 전송 """
+    try:
+        client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        client_socket.connect((MAIN_ADDR, MAIN_PORT))
+        client_socket.send(f"{'&&'.join(messages)}".encode('utf-8'))
+
+        ready = select.select([client_socket], [], [], 2)
+        if ready[0]:
+            response = client_socket.recv(2048).decode('utf-8')
+        else:
+            response = "Timeout"
+    except Exception as e:
+        response = f"Error: {str(e)}"
+    finally:
+        client_socket.close()
+    return response
+
+# ✅ UDP 소켓 초기화
 c_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 c_sock.bind((UDP_IP, UDP_PORT))
 socketList = [c_sock]
 
-# 버퍼 초기화 (4개의 패킷을 저장)
-s = [b'\x00' * 57600 for _ in range(4)]
-
 while True:
-    picture = b''
     read_socket, _, _ = select.select(socketList, [], [], 1)
     
     for sock in read_socket:
         data, addr = sock.recvfrom(57601)
-        s[data[0]] = data[1:]
-        
-        if data[0] == 3:  # 마지막 패킷을 받았을 때
-            # 전체 이미지 데이터 조합
-            for i in range(4):
-                picture += s[i]
-            
-            # numpy 배열로 변환
-            frame = np.frombuffer(picture, dtype=np.uint8)
-            frame = frame.reshape(240, 320, 3)
-            frame = cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)
-            
-            # YOLOv8 입력 크기로 리사이징 (stride 32의 배수)
+
+        if data:
+            encodete_img = np.frombuffer(data[1:], dtype=np.uint8)
+            frame = cv2.imdecode(encodete_img, cv2.IMREAD_COLOR)
+
+            # ✅ YOLOv8 입력 크기로 리사이징 (stride 32의 배수)
             resized_frame = cv2.resize(frame, (320, 256))
-            
-            # JPEG으로 인코딩
+
+            # ✅ JPEG으로 인코딩
             _, img_encoded = cv2.imencode(".jpg", resized_frame)
             img_bytes = img_encoded.tobytes()
-            
-            try:
-                # TorchServe로 전송
-                response = requests.post(TORCHSERVE_URL, headers=HEADERS, data=img_bytes)
+
+            responses = {}
+            for model_name, model_url in MODEL_URLS.items():
+                try:
+                    # 🔥 TorchServe 요청
+                    response = requests.post(model_url, headers=HEADERS, data=img_bytes)
+
+                    if response.status_code == 200:
+                        responses[model_name] = response.json()
+                    else:
+                        print(f"❌ {model_name.upper()} 서버 오류: {response.status_code}, {response.text}")
+                        responses[model_name] = []
                 
-                if response.status_code == 200:
-                    detections = response.json()
-                    print("🎯 Detection Results:", detections)
-                    
-                    # 바운딩 박스 그리기
-                    for obj in detections:
-                        x_min, y_min, x_max, y_max = map(int, obj["bbox"])
-                        conf = obj["confidence"]
-                        class_id = obj["class_id"]
-                        
-                        # 바운딩 박스 & 라벨 표시
-                        label = f"Class {class_id}: {conf:.2f}"
-                        cv2.rectangle(resized_frame, (x_min, y_min), (x_max, y_max), (0, 255, 0), 2)
-                        cv2.putText(resized_frame, label, (x_min, y_min - 10), 
-                                  cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
-                else:
-                    print(f"❌ 서버 오류: {response.status_code}, {response.text}")
-                    
-            except Exception as e:
-                print(f"❌ 요청 실패: {str(e)}")
-            
-            # 결과 영상 출력
-            cv2.imshow("YOLOv8 UDP Stream Inference", resized_frame)
-    
+                except Exception as e:
+                    print(f"❌ {model_name.upper()} 요청 실패: {str(e)}")
+                    responses[model_name] = []
+
+            # 🔹 탐지 결과 확인
+            print("🎯 Target Detection:", responses["target"])
+            print("🔥 Fire Detection:", responses["fire"])
+
+            # ✅ TCP로 탐지 결과 전송
+            detection_json = json.dumps(responses)
+            tcp_response = send_tcp_message([detection_json])
+            print(f"📡 TCP Response: {tcp_response}")
+
     # 'q' 키를 누르면 종료
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
-# 종료
-cv2.destroyAllWindows()
+# ✅ 종료
 c_sock.close()
