@@ -13,14 +13,15 @@ UDP_PORT = 9506
 MAIN_ADDR = "192.168.0.8"
 MAIN_PORT = 8081
 
-# ✅ TorchServe 설정 (두 모델 동시 실행)
+# ✅ TorchServe 설정 (세 개의 모델 실행)
 MODEL_URLS = {
     "target": "http://localhost:8080/predictions/target_detector",
-    "fire": "http://localhost:8080/predictions/fire_detector"
+    "fire": "http://localhost:8080/predictions/fire_detector",
+    "pose": "http://localhost:8080/predictions/pose_estimator"
 }
 
 HEADERS = {
-    "Authorization": "Bearer borSUIIE",  
+    "Authorization": "Bearer ygr6vocu",  
     "Content-Type": "image/jpeg"
 }
 
@@ -66,6 +67,10 @@ while True:
 
             responses = {}
             for model_name, model_url in MODEL_URLS.items():
+                # 🔥 `pose_estimator`는 초기 실행 안함 (target 결과에 따라 실행)
+                if model_name == "pose":
+                    continue
+
                 try:
                     # 🔥 TorchServe 요청
                     response = requests.post(model_url, headers=HEADERS, data=img_bytes)
@@ -81,8 +86,32 @@ while True:
                     responses[model_name] = []
 
             # 🔹 탐지 결과 확인
-            print("🎯 Target Detection:", responses["target"])
-            print("🔥 Fire Detection:", responses["fire"])
+            print("🎯 Target Detection:", responses.get("target", []))
+            print("🔥 Fire Detection:", responses.get("fire", []))
+
+            # ✅ target_detector 결과에서 "class": 0이 감지되었는지 확인
+            target_detected = False
+            for detection in responses.get("target", []):
+                if detection.get("class_id") == 0:
+                    target_detected = True
+                    break
+
+            if target_detected:
+                print("🚀 Target Detected (Class_id: 0) → Pose Estimation 시작")
+
+                # 🔥 pose_estimator 실행
+                try:
+                    response = requests.post(MODEL_URLS["pose"], headers=HEADERS, data=img_bytes)
+                    if response.status_code == 200:
+                        responses["pose"] = response.json()
+                        print("Pose Estimation:", responses.get("pose", []))
+
+                    else:
+                        print(f"❌ POSE_ESTIMATOR 서버 오류: {response.status_code}, {response.text}")
+                        responses["pose"] = []
+                except Exception as e:
+                    print(f"❌ POSE_ESTIMATOR 요청 실패: {str(e)}")
+                    responses["pose"] = []
 
             # ✅ TCP로 탐지 결과 전송
             detection_json = json.dumps(responses)
