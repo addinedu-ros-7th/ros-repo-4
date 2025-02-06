@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1085</width>
-    <height>689</height>
+    <width>890</width>
+    <height>1421</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,10 +16,10 @@
   <widget class="QGroupBox" name="groupBox_2">
    <property name="geometry">
     <rect>
-     <x>760</x>
-     <y>250</y>
-     <width>251</width>
-     <height>181</height>
+     <x>10</x>
+     <y>630</y>
+     <width>361</width>
+     <height>251</height>
     </rect>
    </property>
    <property name="title">
@@ -28,7 +28,7 @@
    <widget class="QPushButton" name="pushButton_4">
     <property name="geometry">
      <rect>
-      <x>140</x>
+      <x>250</x>
       <y>50</y>
       <width>88</width>
       <height>27</height>
@@ -41,7 +41,7 @@
    <widget class="QPushButton" name="pushButton_5">
     <property name="geometry">
      <rect>
-      <x>140</x>
+      <x>250</x>
       <y>100</y>
       <width>88</width>
       <height>27</height>
@@ -54,7 +54,7 @@
    <widget class="QPushButton" name="pushButton_6">
     <property name="geometry">
      <rect>
-      <x>140</x>
+      <x>250</x>
       <y>150</y>
       <width>88</width>
       <height>27</height>
@@ -64,7 +64,7 @@
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label_5">
+   <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -103,58 +103,32 @@
      <string>...</string>
     </property>
    </widget>
+   <widget class="QProgressBar" name="pb_pyri2_bat">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>0</y>
+      <width>121</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="value">
+     <number>24</number>
+    </property>
+   </widget>
   </widget>
   <widget class="QGroupBox" name="groupBox_3">
    <property name="geometry">
     <rect>
-     <x>760</x>
-     <y>50</y>
-     <width>251</width>
-     <height>181</height>
+     <x>10</x>
+     <y>360</y>
+     <width>361</width>
+     <height>251</height>
     </rect>
    </property>
    <property name="title">
     <string>Pyri1</string>
    </property>
-   <widget class="QPushButton" name="pushButton_7">
-    <property name="geometry">
-     <rect>
-      <x>140</x>
-      <y>50</y>
-      <width>88</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Camera</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_8">
-    <property name="geometry">
-     <rect>
-      <x>140</x>
-      <y>100</y>
-      <width>88</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Direct CTRL</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_9">
-    <property name="geometry">
-     <rect>
-      <x>140</x>
-      <y>150</y>
-      <width>88</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Emergency</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_8">
     <property name="geometry">
      <rect>
@@ -194,14 +168,27 @@
      <string>...</string>
     </property>
    </widget>
+   <widget class="QProgressBar" name="pb_pyri1_bat">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>0</y>
+      <width>121</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="value">
+     <number>24</number>
+    </property>
+   </widget>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="lbl_map">
    <property name="geometry">
     <rect>
-     <x>15</x>
-     <y>70</y>
-     <width>701</width>
-     <height>361</height>
+     <x>10</x>
+     <y>40</y>
+     <width>653</width>
+     <height>308</height>
     </rect>
    </property>
    <property name="frameShape">
@@ -211,11 +198,11 @@
     <string>Map Image Label</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QLabel" name="lbl_time">
    <property name="geometry">
     <rect>
-     <x>460</x>
-     <y>40</y>
+     <x>410</x>
+     <y>10</y>
      <width>251</width>
      <height>20</height>
     </rect>
@@ -227,11 +214,11 @@
     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_10">
+  <widget class="QPushButton" name="btn_test1">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>520</y>
+     <x>690</x>
+     <y>40</y>
      <width>88</width>
      <height>27</height>
     </rect>
@@ -240,11 +227,11 @@
     <string>test1</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_11">
+  <widget class="QPushButton" name="btn_test2">
    <property name="geometry">
     <rect>
-     <x>120</x>
-     <y>520</y>
+     <x>790</x>
+     <y>40</y>
      <width>88</width>
      <height>27</height>
     </rect>
@@ -253,11 +240,11 @@
     <string>test2</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_12">
+  <widget class="QPushButton" name="btn_test3">
    <property name="geometry">
     <rect>
-     <x>220</x>
-     <y>520</y>
+     <x>690</x>
+     <y>80</y>
      <width>88</width>
      <height>27</height>
     </rect>
@@ -266,11 +253,11 @@
     <string>test3</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_13">
+  <widget class="QPushButton" name="btn_test4">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>560</y>
+     <x>790</x>
+     <y>80</y>
      <width>88</width>
      <height>27</height>
     </rect>
@@ -279,11 +266,11 @@
     <string>test4</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_14">
+  <widget class="QPushButton" name="btn_test5">
    <property name="geometry">
     <rect>
-     <x>120</x>
-     <y>560</y>
+     <x>690</x>
+     <y>120</y>
      <width>88</width>
      <height>27</height>
     </rect>
@@ -292,11 +279,11 @@
     <string>test5</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_15">
+  <widget class="QPushButton" name="btn_test6">
    <property name="geometry">
     <rect>
-     <x>220</x>
-     <y>560</y>
+     <x>790</x>
+     <y>120</y>
      <width>88</width>
      <height>27</height>
     </rect>
@@ -305,11 +292,11 @@
     <string>test6</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_16">
+  <widget class="QPushButton" name="btn_test7">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>600</y>
+     <x>690</x>
+     <y>160</y>
      <width>88</width>
      <height>27</height>
     </rect>
@@ -318,24 +305,11 @@
     <string>test7</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_17">
+  <widget class="QPushButton" name="btn_test8">
    <property name="geometry">
     <rect>
-     <x>220</x>
-     <y>600</y>
-     <width>88</width>
-     <height>27</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>test9</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_18">
-   <property name="geometry">
-    <rect>
-     <x>120</x>
-     <y>600</y>
+     <x>790</x>
+     <y>160</y>
      <width>88</width>
      <height>27</height>
     </rect>
@@ -344,6 +318,291 @@
     <string>test8</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="btn_test9">
+   <property name="geometry">
+    <rect>
+     <x>690</x>
+     <y>200</y>
+     <width>88</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>test9</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lbl_test1">
+   <property name="geometry">
+    <rect>
+     <x>690</x>
+     <y>380</y>
+     <width>191</width>
+     <height>161</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="text">
+    <string>Test Text Label</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lbl_cam1">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>360</y>
+     <width>281</width>
+     <height>251</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="text">
+    <string>No Signal from Pyri1</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lbl_cam2">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>630</y>
+     <width>281</width>
+     <height>251</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="text">
+    <string>No Signal from Pyri2</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_test10">
+   <property name="geometry">
+    <rect>
+     <x>790</x>
+     <y>200</y>
+     <width>88</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>test10</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lbl_test2">
+   <property name="geometry">
+    <rect>
+     <x>690</x>
+     <y>550</y>
+     <width>191</width>
+     <height>161</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="text">
+    <string>Test Text Label</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lbl_test3">
+   <property name="geometry">
+    <rect>
+     <x>690</x>
+     <y>720</y>
+     <width>191</width>
+     <height>161</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="text">
+    <string>Test Text Label</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="le_test1">
+   <property name="geometry">
+    <rect>
+     <x>770</x>
+     <y>260</y>
+     <width>113</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>100</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="le_test2">
+   <property name="geometry">
+    <rect>
+     <x>770</x>
+     <y>300</y>
+     <width>113</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>100</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>700</x>
+     <y>260</y>
+     <width>66</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>test_x</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>700</x>
+     <y>300</y>
+     <width>66</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>test_y</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>1060</y>
+     <width>16</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>1020</y>
+     <width>111</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>1040</y>
+     <width>21</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>1060</y>
+     <width>16</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_3">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>1060</y>
+     <width>16</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_10">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>1060</y>
+     <width>16</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_11">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>1060</y>
+     <width>16</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <zorder>label_2</zorder>
+  <zorder>groupBox_2</zorder>
+  <zorder>groupBox_3</zorder>
+  <zorder>lbl_map</zorder>
+  <zorder>lbl_time</zorder>
+  <zorder>btn_test1</zorder>
+  <zorder>btn_test2</zorder>
+  <zorder>btn_test3</zorder>
+  <zorder>btn_test4</zorder>
+  <zorder>btn_test5</zorder>
+  <zorder>btn_test6</zorder>
+  <zorder>btn_test7</zorder>
+  <zorder>btn_test8</zorder>
+  <zorder>btn_test9</zorder>
+  <zorder>lbl_test1</zorder>
+  <zorder>lbl_cam1</zorder>
+  <zorder>lbl_cam2</zorder>
+  <zorder>btn_test10</zorder>
+  <zorder>lbl_test2</zorder>
+  <zorder>lbl_test3</zorder>
+  <zorder>le_test1</zorder>
+  <zorder>le_test2</zorder>
+  <zorder>label</zorder>
+  <zorder>label_4</zorder>
+  <zorder>pushButton</zorder>
+  <zorder>label_5</zorder>
+  <zorder>pushButton_2</zorder>
+  <zorder>pushButton_3</zorder>
+  <zorder>pushButton_10</zorder>
+  <zorder>pushButton_11</zorder>
  </widget>
  <resources/>
  <connections/>
