@@ -21,7 +21,8 @@ setup(
     entry_points={
         'console_scripts': [
             'vel = pyri_navigation.vel:main',
-            'navigate = pyri_navigation.navigate:main',  
+            'navigate = pyri_navigation.navigate:main',
+            'goal_pose = pyri_navigation.goal_pose:main', 
         ],
     },
 )
