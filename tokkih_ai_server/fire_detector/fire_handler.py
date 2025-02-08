@@ -6,6 +6,7 @@ import cv2
 from PIL import Image
 from ts.torch_handler.base_handler import BaseHandler
 from ultralytics import YOLO
+from concurrent.futures import ThreadPoolExecutor
 
 class FireDetectionHandler(BaseHandler):
     def initialize(self, context):
@@ -18,26 +19,20 @@ class FireDetectionHandler(BaseHandler):
         self.model = YOLO(model_path).to(self.device)
         self.model.eval()
 
-        self.confidence_threshold = float(os.environ.get("CONFIDENCE_THRESHOLD", 0.4))
+        self.confidence_threshold = float(os.environ.get("CONFIDENCE_THRESHOLD", 0.2))
 
         print(f"✅ Fire Detection Model (YOLOv8) Loaded Successfully with threshold {self.confidence_threshold}")
 
-    def preprocess(self, data):
-        """ 🔥 영상 전처리 (동영상 → 프레임) """
+    def preprocess_single_video(self, video_idx, video_bytes):
+        """ 🔥 개별 영상 전처리 """
         try:
-            video_bytes = data[0].get("body", None)
-            if video_bytes is None:
-                raise ValueError("❌ Received empty video data")
-
-            # OpenCV에서 읽을 수 있도록 임시 파일로 저장
-            video_path = "/tmp/fire_video.mp4"
+            video_path = f"/tmp/fire_video_{video_idx}.mp4"
             with open(video_path, "wb") as f:
                 f.write(video_bytes)
 
             cap = cv2.VideoCapture(video_path)
-
             if not cap.isOpened():
-                raise ValueError("❌ VideoCapture failed to open video file")
+                raise ValueError(f"❌ VideoCapture failed to open video file {video_idx}")
 
             frames = []
             while True:
@@ -54,23 +49,54 @@ class FireDetectionHandler(BaseHandler):
             cap.release()
 
             if len(frames) == 0:
-                raise ValueError("❌ No valid frames found in video")
+                raise ValueError(f"❌ No valid frames found in video {video_idx}")
 
-            print(f"📌 Total Frames Extracted: {len(frames)}")
+            print(f"📌 Video {video_idx} - Total Frames Extracted: {len(frames)}")
             return {"frames": frames}
-        
+
         except Exception as e:
-            print(f"🔥 Preprocessing error: {e}")
+            print(f"🔥 Preprocessing error in Video {video_idx}: {e}")
             return None
 
-    def inference(self, data):
-        """ 🔥 YOLOv8 기반 불/연기 탐지 """
+    def preprocess(self, data, num_workers=2):
+        """ 🔥 다중 영상 병렬 전처리 """
+        videos = []
+        with ThreadPoolExecutor(max_workers=num_workers) as executor:
+            futures = [executor.submit(self.preprocess_single_video, idx, video_data.get("body", None))
+                       for idx, video_data in enumerate(data)]
+            
+            for future in futures:
+                result = future.result()
+                if result:
+                    videos.append(result)
+                else:
+                    videos.append({"frames": []})  # 실패한 경우 빈 리스트 반환
+
+        return {"videos": videos}
+
+    def inference_single_video(self, video_idx, frames):
+        """ 🔥 개별 영상 추론 """
+        if len(frames) == 0:
+            return []
+
         with torch.no_grad():
-            results = [self.model(frame.unsqueeze(0), verbose=False)[0] for frame in data["frames"]]
+            results = [self.model(frame.unsqueeze(0), verbose=False)[0] for frame in frames]
         return results
 
-    def postprocess(self, detections):
-        """ 🔥 탐지된 결과 후처리 (프레임별 탐지 정보) """
+    def inference(self, data, num_workers=2):
+        """ 🔥 다중 영상 병렬 추론 """
+        results = []
+        with ThreadPoolExecutor(max_workers=num_workers) as executor:
+            futures = [executor.submit(self.inference_single_video, idx, video_data["frames"])
+                       for idx, video_data in enumerate(data["videos"])]
+
+            for future in futures:
+                results.append(future.result())
+
+        return results
+
+    def postprocess_single_video(self, video_idx, detections):
+        """ 🔥 개별 영상 후처리 """
         predictions = []
         
         for result in detections:
@@ -88,7 +114,6 @@ class FireDetectionHandler(BaseHandler):
                 if confidence < self.confidence_threshold:
                     continue
 
-
                 class_mapping = {0: 100, 1: 101}  # 0: 불 → 100, 1: 연기 → 101
                 adjusted_class_id = class_mapping.get(int(classes[i]), 199)
 
@@ -104,10 +129,22 @@ class FireDetectionHandler(BaseHandler):
 
         return predictions
 
+    def postprocess(self, detections, num_workers=2):
+        """ 🔥 다중 영상 병렬 후처리 """
+        results = []
+        with ThreadPoolExecutor(max_workers=num_workers) as executor:
+            futures = [executor.submit(self.postprocess_single_video, idx, detections[idx])
+                       for idx in range(len(detections))]
+
+            for future in futures:
+                results.append(future.result())
+
+        return results
+
     def handle(self, data, context):
         """ 🔥 요청 처리 (전처리 → 추론 → 후처리) """
         preprocessed_data = self.preprocess(data)
-        if preprocessed_data is None:
+        if not preprocessed_data or not preprocessed_data["videos"]:
             return [{"results": []}]  # ✅ 빈 응답도 리스트로 감싸서 반환
 
         detections = self.inference(preprocessed_data)
