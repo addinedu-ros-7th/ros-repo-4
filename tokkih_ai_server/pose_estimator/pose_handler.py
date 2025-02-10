@@ -7,7 +7,7 @@ from collections import defaultdict, deque
 from ts.torch_handler.base_handler import BaseHandler
 from ultralytics import YOLO
 import torch.nn as nn
-from lstm_model import LSTMPoseClassifier  # ✅ LSTM 모델 불러오기
+from transformer_model import TransformerPoseClassifier  # ✅ Transformer 모델 불러오기
 
 
 class PoseEstimatorHandler(BaseHandler):
@@ -16,7 +16,7 @@ class PoseEstimatorHandler(BaseHandler):
         super().__init__()
         self.device = None
         self.pose_model = None
-        self.lstm_model = None
+        self.transformer_model = None
         self.class_names = ["running", "walking", "sitting", "lying"]
         self.sequence_buffers = None
         self.initialized = False
@@ -33,12 +33,12 @@ class PoseEstimatorHandler(BaseHandler):
 
         # 모델 파일 경로 확인
         yolo_path = os.path.join(model_dir, "yolov8n-pose.pt")
-        lstm_path = os.path.join(model_dir, "lstm_pose_classifier2.0.pth")
+        transformer_path = os.path.join(model_dir, "pose_estimator.pth")
 
         if not os.path.exists(yolo_path):
             raise FileNotFoundError(f"❌ YOLO model not found at {yolo_path}")
-        if not os.path.exists(lstm_path):
-            raise FileNotFoundError(f"❌ LSTM model not found at {lstm_path}")
+        if not os.path.exists(transformer_path):
+            raise FileNotFoundError(f"❌ Transformer model not found at {transformer_path}")
 
         # ✅ YOLO 모델 로드
         try:
@@ -47,24 +47,25 @@ class PoseEstimatorHandler(BaseHandler):
         except Exception as e:
             raise RuntimeError(f"❌ Failed to load YOLO model: {str(e)}")
 
-        # ✅ LSTM 모델 로드 (num_layers=2 적용)
+        # ✅ Transformer 모델 로드
         try:
-            checkpoint = torch.load(lstm_path, map_location=self.device)
-
-            self.lstm_model = LSTMPoseClassifier(
-                input_dim=17 * 2,
-                hidden_dim=128,
+            checkpoint = torch.load(transformer_path, map_location=self.device)
+            self.transformer_model = TransformerPoseClassifier(
+                input_dim=34,  # 17개 랜드마크 * 2 (x, y)
                 output_dim=len(self.class_names),
-                num_layers=2  # ✅ 모델 구조에 맞춰 수정
+                num_heads=4,
+                num_layers=4,
+                hidden_dim=128,
+                dropout=0.5,
+                max_len=96
             ).to(self.device)
 
-            # 가중치 로드 (strict=False로 혹시 모를 문제 방지)
-            self.lstm_model.load_state_dict(checkpoint, strict=False)
-            self.lstm_model.eval()
+            self.transformer_model.load_state_dict(checkpoint, strict=False)
+            self.transformer_model.eval()
         except Exception as e:
-            raise RuntimeError(f"❌ Failed to load LSTM model: {str(e)}")
+            raise RuntimeError(f"❌ Failed to load Transformer model: {str(e)}")
 
-        # ✅ 시퀀스 버퍼 초기화
+        # ✅ 시퀀스 버퍼 초기화 (최대 5명 추적)
         self.sequence_buffers = defaultdict(lambda: deque(maxlen=96))
         self.initialized = True
 
@@ -94,7 +95,7 @@ class PoseEstimatorHandler(BaseHandler):
                 if not ret:
                     break
 
-                # ✅ YOLOv8 Pose 입력 크기로 조정 (32의 배수)
+                # ✅ YOLOv8 Pose 입력 크기로 조정
                 target_size = (320, 256)
                 frame = cv2.resize(frame, target_size)
                 frames.append(frame)
@@ -125,20 +126,19 @@ class PoseEstimatorHandler(BaseHandler):
         return people_data
 
     def predict_class(self, sequence):
-        """ LSTM 모델을 사용하여 동작(class) 예측 """
+        """ Transformer 모델을 사용하여 동작(class) 예측 """
         if len(sequence) < 96:
             return "Waiting for data..."
 
         input_tensor = torch.tensor(np.array(sequence), dtype=torch.float32).unsqueeze(0).to(self.device)
-        input_tensor = input_tensor.view(input_tensor.size(0), input_tensor.size(1), -1)
 
         with torch.no_grad():
-            output = self.lstm_model(input_tensor)
+            output = self.transformer_model(input_tensor)
             _, predicted = torch.max(output, 1)
         return self.class_names[predicted.item()]
 
     def inference(self, data):
-        """ YOLO Pose → LSTM 동작 인식 실행 """
+        """ YOLO Pose → Transformer 동작 인식 실행 """
         frames = data["frames"]
         results = []
 
@@ -152,7 +152,8 @@ class PoseEstimatorHandler(BaseHandler):
 
             frame_results = []
             for person_id, landmarks in people_data:
-                self.sequence_buffers[person_id].append(landmarks)
+                self.sequence_buffers[person_id].append(landmarks.flatten())  # (34,)
+
                 predicted_class = self.predict_class(self.sequence_buffers[person_id])
                 frame_results.append({"person_id": person_id, "pose": predicted_class})
 
