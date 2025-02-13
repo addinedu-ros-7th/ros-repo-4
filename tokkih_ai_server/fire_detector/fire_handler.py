@@ -142,13 +142,20 @@ class FireDetectionHandler(BaseHandler):
         return results
 
     def handle(self, data, context):
-        """ 🔥 요청 처리 (전처리 → 추론 → 후처리) """
-        preprocessed_data = self.preprocess(data)
-        if not preprocessed_data or not preprocessed_data["videos"]:
-            return [{"results": []}]  # ✅ 빈 응답도 리스트로 감싸서 반환
+        """ 📌 TorchServe 배치 처리 대응 """
+        
+        batch_size = len(data)  # ✅ 입력 배치 크기 확인
+        preprocessed_data = [self.preprocess([d]) for d in data]  # ✅ 개별 전처리
 
-        detections = self.inference(preprocessed_data)
-        response = self.postprocess(detections)
+        # 🔹 전처리 실패한 경우 빈 딕셔너리 유지
+        preprocessed_data = [p if p else {} for p in preprocessed_data]
 
-        # 🔥 TorchServe 호환 응답 반환
-        return [{"results": response}]  # ✅ 반드시 리스트로 감싸서 반환
+        detections = [self.inference(p) for p in preprocessed_data]
+        responses = [self.postprocess(d) for d in detections]
+
+        # ✅ 항상 입력 개수와 동일한 리스트 반환
+        return responses if len(responses) == batch_size else [[]] * batch_size
+
+
+
+
