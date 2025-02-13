@@ -1,0 +1,12 @@
+<?xml version='1.0' ?>
+
+<launch>
+
+    <node pkg="task_manager" exec="fire_door">
+        <!-- <param name="pyri_state" value="$(var pyri_state)"/> -->
+    </node>
+
+    <node pkg="task_manager" exec="service_listener">
+    </node>
+    
+</launch>
