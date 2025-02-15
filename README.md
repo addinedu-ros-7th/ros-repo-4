@@ -64,6 +64,7 @@
 
 # 03. 주요 기능
 ## 03-1. 전체 경로 탐색
+![Image](https://github.com/user-attachments/assets/b43e230c-a200-476f-ae83-e286af2e05d9)
 
 ## 03-2. 구조 대상 탐지
 ## 03-3. 장애물 대응(1)
