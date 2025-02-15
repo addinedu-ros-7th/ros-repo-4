@@ -4,20 +4,37 @@
 
 # 01. 프로젝트 소개
 ## 01-1. 프로젝트 목표
-- 화재 및 재난 현장에서 장애물 및 위험도 분석, 실시간 구조 지도 생성, 구조 대상 탐지 및 대피 유도를 수행하는 자율주행 로봇 시스템 개발
+- 화재 및 재난 현장에서 **장애물 및 위험도 분석**, **실시간 구조 지도** **생성**, **구조 대상 탐지 및 대피 유도**를 수행하는 자율주행 로봇 시스템 개발
 
 ## 01-2. 주제 선정 배경
-- 구조 대원의 안전 : 연기, 화염, 건물 붕괴의 위험 속에서 직접 진입.
-- 정보 부족 : 재난 현장의 구조 정보와 위험 요소 실시간 상황 파악의 어려움.
-- 대피 경로 부재 : 대피 경로에 대해 명확한 가이드 제공이 어려움.
+- **구조 대원의 안전** : 연기, 화염, 건물 붕괴의 위험 속에서 직접 진입.
+- **정보 부족** : 재난 현장의 구조 정보와 위험 요소 실시간 상황 파악의 어려움.
+- **대피 경로 부재** : 대피 경로에 대해 명확한 가이드 제공이 어려움.
 
 ## 01-3. 주요 기능
-<p align="center">
 <img width="848" alt="image" src="https://github.com/user-attachments/assets/3c218ff5-192f-4879-87e9-4d87851f8050" />
-</p>
+
 
 ## 01-4. 팀원 및 역할
+|**이름** | **역할** |
+|---|---|
+| **김소영** | 기획 및 설계, 통신 시스템 설계, Control GUI 디자인 및 개발 |
+| **김재현** | 딥러닝 모델 개발, 모델 배포 및 운영, AI Manager 개발 |
+| **임주원** | SLAM 및 Nav2 기반 주행 구현, ROS PKG 생성 및 통신 구현, 로봇 경로 생성 알고리즘 개발 |
+| **함동균** | Control Server 개발, 로봇 경로 생성 알고리즘 개발, 다중 로봇 제어 구현 |
+
 ## 01-5. 기술 스택
+| **항목** | **내용** |
+|:--:|---|
+| **개발 환경** | ![Ubuntu](https://img.shields.io/badge/Ubuntu-24.04-E95420?logo=ubuntu&logoColor=white) |
+| **개발 언어** | ![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white) ![SQL](https://img.shields.io/badge/SQL-4479A1?logo=postgresql&logoColor=white) |
+| **개발 도구** | ![ROS2](https://img.shields.io/badge/ROS2-Jazzy-22314E?logo=ros&logoColor=white) ![PyQt](https://img.shields.io/badge/PyQt-41CD52?logo=qt&logoColor=white) ![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white) |
+| **협업 도구** | ![Jira](https://img.shields.io/badge/Jira-0052CC?logo=jira&logoColor=white) ![Confluence](https://img.shields.io/badge/Confluence-172B4D?logo=confluence&logoColor=white) ![Git](https://img.shields.io/badge/Git-F05032?logo=git&logoColor=white) ![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white) |
+| **MLOps** | ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?logo=pytorch&logoColor=white) ![TorchServe](https://img.shields.io/badge/TorchServe-FF6F00?logo=pytorch&logoColor=white) ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white) |
+| **통신** | ![ROS2](https://img.shields.io/badge/ROS2-DDS-22314E?logo=ros&logoColor=white) ![UDP](https://img.shields.io/badge/UDP-0052CC?logo=wikipedia&logoColor=white) ![HTTP](https://img.shields.io/badge/HTTP-000000?logo=GoogleChrome&logoColor=white) ![TCP](https://img.shields.io/badge/TCP-004880?logo=cisco&logoColor=white) |
+
+
+
 
 # 02. 프로젝트 설계
 ## 02-1. 기능 리스트
