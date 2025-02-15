@@ -1,3 +1,1 @@
-# ros-repo-4
-파이널 프로젝트 4조 저장소. 재난 현장 탐색 및 구조 로봇
-!
+<img width="916" alt="image" src="https://github.com/user-attachments/assets/93aa6310-9032-4851-b83d-fbc23b61d00a" />
