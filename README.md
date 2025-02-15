@@ -47,7 +47,11 @@
 <img width="647" alt="image" src="https://github.com/user-attachments/assets/a4dd0f1a-4b79-449c-9edd-1b9be381ce85" />
 
 ## 02-5. Behavior Tree
+<img width="891" alt="image" src="https://github.com/user-attachments/assets/0f5f6665-1225-47db-83d3-1cf0c468ec36" />
+
 ## 02-6. ERD
+<img width="982" alt="image" src="https://github.com/user-attachments/assets/bbe280f6-760b-4240-8a45-b7d9cf7c0b58" />
+
 ## 02-7. 상황실 화면 구성도
 
 # 03. 주요 기능
