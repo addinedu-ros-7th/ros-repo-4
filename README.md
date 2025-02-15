@@ -2,8 +2,11 @@
   <img width="916" alt="image" src="https://github.com/user-attachments/assets/93aa6310-9032-4851-b83d-fbc23b61d00a" />
 </p>
 
-# 00. 통합 영상
+# 00. 파이토끼
+## 01. 통합 영상
 [![ ](https://img.youtube.com/vi/GnMYARfWPEs/0.jpg)](https://youtube.com/shorts/GnMYARfWPEs?si=HJs3EaWiIBXYDwoN)
+## 02. 발표 자료
+[파이토끼 발표 자료](https://docs.google.com/presentation/d/13RBxSe_4TvYX2x6u4SbVQMm9CwZP5-0HAGWoL_2vUaw/edit#slide=id.g33465be63bc_0_94)
 
 # 01. 프로젝트 소개
 ## 01-1. 프로젝트 목표
