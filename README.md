@@ -44,6 +44,8 @@
 <img width="658" alt="image" src="https://github.com/user-attachments/assets/2e3471e1-56fe-44ad-8428-a18380eda540" />
 
 ## 02-4. 구조 작업 시퀀스
+<img width="647" alt="image" src="https://github.com/user-attachments/assets/a4dd0f1a-4b79-449c-9edd-1b9be381ce85" />
+
 ## 02-5. Behavior Tree
 ## 02-6. ERD
 ## 02-7. 상황실 화면 구성도
