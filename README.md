@@ -65,9 +65,19 @@
 # 03. 주요 기능
 ## 03-1. 전체 경로 탐색
 ![Image](https://github.com/user-attachments/assets/b43e230c-a200-476f-ae83-e286af2e05d9)
+![Image](https://github.com/user-attachments/assets/fdd2f0d1-cea6-4024-9c2d-308f87ce28ac)
+## 03-2. 위험도 분석
+![fire_2 5x_optimized_final](https://github.com/user-attachments/assets/1fe0e000-ab33-407f-b42a-471f08af9396)
+![fire_detect_2 5x_optimized](https://github.com/user-attachments/assets/11efa4a3-fdf5-486e-b7ab-eeb7548c979f)
 
 ## 03-2. 구조 대상 탐지
+![target_detect_2x_optimized](https://github.com/user-attachments/assets/0a39ba48-0afb-43ca-971e-d0123a52c3b1)
+![target_MOV_optimized_8MB](https://github.com/user-attachments/assets/e7d03ff8-2ba3-4baa-b951-e5d4996fccf6)
+
 ## 03-3. 장애물 대응(1)
+![obstacle_detecting_high_quality](https://github.com/user-attachments/assets/64292065-130c-4dc0-8482-2b5ff47f1a4c)
+![obstacle_detecting_optimized](https://github.com/user-attachments/assets/f1bdb5ef-c359-4982-bc69-d9159d780491)
+
 ## 03-4. 장애물 대응(2)
 ## 03-5. 화재 확산 차단
 
