@@ -2,7 +2,7 @@
   <img width="916" alt="image" src="https://github.com/user-attachments/assets/93aa6310-9032-4851-b83d-fbc23b61d00a" />
 </p>
 
-# 00. 영상 및 발표 자료
+# 00. 통합 영상 및 발표 자료
 ## 01. 통합 영상
 [![ ](https://img.youtube.com/vi/GnMYARfWPEs/0.jpg)](https://youtube.com/shorts/GnMYARfWPEs?si=HJs3EaWiIBXYDwoN)
 ## 02. 발표 자료
