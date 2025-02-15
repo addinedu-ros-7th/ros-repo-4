@@ -38,7 +38,11 @@
 <img width="848" alt="image" src="https://github.com/user-attachments/assets/3c218ff5-192f-4879-87e9-4d87851f8050" />
 
 ## 02-2. 시스템 구성도
+<img width="665" alt="image" src="https://github.com/user-attachments/assets/22245218-3bad-403a-ad0f-79057b9ef289" />
+
 ## 02-3. Pyri 로봇 상태 정의
+<img width="658" alt="image" src="https://github.com/user-attachments/assets/2e3471e1-56fe-44ad-8428-a18380eda540" />
+
 ## 02-4. 구조 작업 시퀀스
 ## 02-5. Behavior Tree
 ## 02-6. ERD
