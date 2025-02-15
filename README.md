@@ -53,6 +53,8 @@
 <img width="982" alt="image" src="https://github.com/user-attachments/assets/bbe280f6-760b-4240-8a45-b7d9cf7c0b58" />
 
 ## 02-7. 상황실 화면 구성도
+<img width="899" alt="image" src="https://github.com/user-attachments/assets/670a8014-cb19-4742-af86-51d46e1ff583" />
+
 
 # 03. 주요 기능
 ## 03-1. 화재 탐지
