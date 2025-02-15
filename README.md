@@ -1,7 +1,12 @@
 <p align="center">
   <img width="916" alt="image" src="https://github.com/user-attachments/assets/93aa6310-9032-4851-b83d-fbc23b61d00a" />
 </p>
+# 00. 통합 영상
 
+[![YouTube Video](https://img.youtube.com/vi/GnMYARfWPEs/0.jpg)](https://youtube.com/shorts/GnMYARfWPEs?si=HJs3EaWiIBXYDwoN)
+
+
+https://youtube.com/shorts/GnMYARfWPEs?si=HJs3EaWiIBXYDwoN
 # 01. 프로젝트 소개
 ## 01-1. 프로젝트 목표
 - 화재 및 재난 현장에서 **장애물 및 위험도 분석**, **실시간 구조 지도** **생성**, **구조 대상 탐지 및 대피 유도**를 수행하는 자율주행 로봇 시스템 개발
