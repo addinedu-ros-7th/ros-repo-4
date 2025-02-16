@@ -81,6 +81,9 @@
 ![장애물](https://github.com/user-attachments/assets/ec4802f4-3ab4-42fe-ad4a-57080ea4488e)
 
 ## 03-4. 장애물 대응(2)
+![kruskal_ultra_hd](https://github.com/user-attachments/assets/439cd154-2293-41b0-a2dc-3314e91b6e02)
+
+
 ## 03-5. 화재 확산 차단
 
 # 04. 핵심 기술
