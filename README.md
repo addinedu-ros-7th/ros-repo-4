@@ -77,6 +77,8 @@
 ## 03-3. 장애물 대응(1)
 ![obstacle_detecting_high_quality](https://github.com/user-attachments/assets/64292065-130c-4dc0-8482-2b5ff47f1a4c)
 ![obstacle_detecting_optimized](https://github.com/user-attachments/assets/f1bdb5ef-c359-4982-bc69-d9159d780491)
+![장애물2](https://github.com/user-attachments/assets/e85b5ff4-65ba-47b7-96a9-80e9f4b3af32)
+![장애물](https://github.com/user-attachments/assets/ec4802f4-3ab4-42fe-ad4a-57080ea4488e)
 
 ## 03-4. 장애물 대응(2)
 ## 03-5. 화재 확산 차단
