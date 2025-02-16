@@ -64,15 +64,13 @@
 
 # 03. 주요 기능
 ## 03-1. 전체 경로 탐색
-
-<img src="https://github.com/user-attachments/assets/a57346d5-68b2-45bf-a4e3-e78e6a432175" width="600" height="300">
-<img src="https://github.com/user-attachments/assets/65aa3d6a-c0a1-42ca-9a46-aeace1e3f1e8" width="600" height="300">
-<img src="https://github.com/user-attachments/assets/d5c56928-a161-4de3-bc50-c2d40ceda8b3" width="600" height="300">
+<img src="https://github.com/user-attachments/assets/a57346d5-68b2-45bf-a4e3-e78e6a432175" width="600" height="200">
+<img src="https://github.com/user-attachments/assets/65aa3d6a-c0a1-42ca-9a46-aeace1e3f1e8" width="600" height="200">
+<img src="https://github.com/user-attachments/assets/d5c56928-a161-4de3-bc50-c2d40ceda8b3" width="600" height="200">
 
 ## 03-2. 위험도 분석
-<img src="https://github.com/user-attachments/assets/1fe0e000-ab33-407f-b42a-471f08af9396" width="300" height="400">
 <img src="https://github.com/user-attachments/assets/11efa4a3-fdf5-486e-b7ab-eeb7548c979f" width="300" height="400">
-
+<img src="https://github.com/user-attachments/assets/1fe0e000-ab33-407f-b42a-471f08af9396" width="300" height="400">
 
 ## 03-2. 구조 대상 탐지
 <img src="https://github.com/user-attachments/assets/0a39ba48-0afb-43ca-971e-d0123a52c3b1" width="300" height="400">
