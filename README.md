@@ -64,6 +64,10 @@
 
 # 03. 주요 기능
 ## 03-1. 전체 경로 탐색
+![경로탐색](https://github.com/user-attachments/assets/a57346d5-68b2-45bf-a4e3-e78e6a432175)
+![경로탐색명령](https://github.com/user-attachments/assets/d5c56928-a161-4de3-bc50-c2d40ceda8b3)
+![kruskal_optimized](https://github.com/user-attachments/assets/65aa3d6a-c0a1-42ca-9a46-aeace1e3f1e8)
+
 ![Image](https://github.com/user-attachments/assets/b43e230c-a200-476f-ae83-e286af2e05d9)
 ![Image](https://github.com/user-attachments/assets/fdd2f0d1-cea6-4024-9c2d-308f87ce28ac)
 ## 03-2. 위험도 분석
