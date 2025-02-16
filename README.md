@@ -3,9 +3,9 @@
 </p>
 
 # 00. 통합 영상 및 발표 자료
-## 01. 통합 영상
+## 01-1. 통합 영상
 [![ ](https://img.youtube.com/vi/GnMYARfWPEs/0.jpg)](https://youtube.com/shorts/GnMYARfWPEs?si=HJs3EaWiIBXYDwoN)
-## 02. 발표 자료
+## 02-1. 발표 자료
 [파이토끼 발표 자료](https://docs.google.com/presentation/d/13RBxSe_4TvYX2x6u4SbVQMm9CwZP5-0HAGWoL_2vUaw/edit#slide=id.g33465be63bc_0_94)
 
 # 01. 프로젝트 소개
@@ -72,20 +72,14 @@
 <img src="https://github.com/user-attachments/assets/11efa4a3-fdf5-486e-b7ab-eeb7548c979f" width="300" height="400">
 <img src="https://github.com/user-attachments/assets/1fe0e000-ab33-407f-b42a-471f08af9396" width="300" height="400">
 
-## 03-2. 구조 대상 탐지
+## 03-3. 구조 대상 탐지
 <img src="https://github.com/user-attachments/assets/0a39ba48-0afb-43ca-971e-d0123a52c3b1" width="300" height="400">
 <img src="https://github.com/user-attachments/assets/e7d03ff8-2ba3-4baa-b951-e5d4996fccf6" width="300" height="400">
 
-
-## 03-3. 장애물 대응(1)
-![obstacle_detecting_high_quality](https://github.com/user-attachments/assets/64292065-130c-4dc0-8482-2b5ff47f1a4c)
-![obstacle_detecting_optimized](https://github.com/user-attachments/assets/f1bdb5ef-c359-4982-bc69-d9159d780491)
-![장애물2](https://github.com/user-attachments/assets/e85b5ff4-65ba-47b7-96a9-80e9f4b3af32)
-![장애물](https://github.com/user-attachments/assets/ec4802f4-3ab4-42fe-ad4a-57080ea4488e)
-
-## 03-4. 장애물 대응(2)
-![kruskal_ultra_hd](https://github.com/user-attachments/assets/439cd154-2293-41b0-a2dc-3314e91b6e02)
-
+## 03-4. 장애물 대응
+<img src="https://github.com/user-attachments/assets/f1bdb5ef-c359-4982-bc69-d9159d780491" width="300" height="200">
+<img src="https://github.com/user-attachments/assets/ec4802f4-3ab4-42fe-ad4a-57080ea4488e" width="300" height="200">
+<img src="https://github.com/user-attachments/assets/e85b5ff4-65ba-47b7-96a9-80e9f4b3af32" width="300" height="200">
 
 ## 03-5. 화재 확산 차단
 
