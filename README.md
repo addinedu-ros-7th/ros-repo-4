@@ -64,19 +64,20 @@
 
 # 03. 주요 기능
 ## 03-1. 전체 경로 탐색
-![경로탐색](https://github.com/user-attachments/assets/a57346d5-68b2-45bf-a4e3-e78e6a432175)
-![경로탐색명령](https://github.com/user-attachments/assets/d5c56928-a161-4de3-bc50-c2d40ceda8b3)
-![kruskal_optimized](https://github.com/user-attachments/assets/65aa3d6a-c0a1-42ca-9a46-aeace1e3f1e8)
 
-![Image](https://github.com/user-attachments/assets/b43e230c-a200-476f-ae83-e286af2e05d9)
-![Image](https://github.com/user-attachments/assets/fdd2f0d1-cea6-4024-9c2d-308f87ce28ac)
+<img src="https://github.com/user-attachments/assets/a57346d5-68b2-45bf-a4e3-e78e6a432175" width="600" height="300">
+<img src="https://github.com/user-attachments/assets/65aa3d6a-c0a1-42ca-9a46-aeace1e3f1e8" width="600" height="300">
+<img src="https://github.com/user-attachments/assets/d5c56928-a161-4de3-bc50-c2d40ceda8b3" width="600" height="300">
+
 ## 03-2. 위험도 분석
-![fire_2 5x_optimized_final](https://github.com/user-attachments/assets/1fe0e000-ab33-407f-b42a-471f08af9396)
-![fire_detect_2 5x_optimized](https://github.com/user-attachments/assets/11efa4a3-fdf5-486e-b7ab-eeb7548c979f)
+<img src="https://github.com/user-attachments/assets/1fe0e000-ab33-407f-b42a-471f08af9396" width="300" height="400">
+<img src="https://github.com/user-attachments/assets/11efa4a3-fdf5-486e-b7ab-eeb7548c979f" width="300" height="400">
+
 
 ## 03-2. 구조 대상 탐지
-![target_detect_2x_optimized](https://github.com/user-attachments/assets/0a39ba48-0afb-43ca-971e-d0123a52c3b1)
-![target_MOV_optimized_8MB](https://github.com/user-attachments/assets/e7d03ff8-2ba3-4baa-b951-e5d4996fccf6)
+<img src="https://github.com/user-attachments/assets/0a39ba48-0afb-43ca-971e-d0123a52c3b1" width="300" height="400">
+<img src="https://github.com/user-attachments/assets/e7d03ff8-2ba3-4baa-b951-e5d4996fccf6" width="300" height="400">
+
 
 ## 03-3. 장애물 대응(1)
 ![obstacle_detecting_high_quality](https://github.com/user-attachments/assets/64292065-130c-4dc0-8482-2b5ff47f1a4c)
