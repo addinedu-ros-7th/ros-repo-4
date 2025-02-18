@@ -22,7 +22,7 @@ class Config:
     MAIN_PORT: int = int(os.getenv("MAIN_PORT", "8081"))
     BUFFER_SIZE: int = 57601
     TCP_TIMEOUT: int = 5
-    AUTH_TOKEN: str = os.getenv("AUTH_TOKEN", "ZMZoQEMi")
+    AUTH_TOKEN: str = os.getenv("AUTH_TOKEN", "QC_FaYSc")
 
     MODEL_URLS: Dict[str, str] = None
     
@@ -92,9 +92,12 @@ class VideoProcessor:
             while self.running.is_set():
                 time.sleep(self.send_intervals)
                 with self.responses_lock:
-                    current_responses = self.latest_responses.get(source_addr, {})
-                self.send_tcp_message(str(pyri_id), current_responses, source_addr)
-                logger.debug(f"📡 Periodic TCP Response for {source_addr}")
+                    response_data = self.latest_responses.get(source_addr, {})
+                    current_pyri_id = response_data.get("pyri_id", pyri_id)
+                    current_responses = response_data.get("data", {})
+                
+                self.send_tcp_message(str(current_pyri_id), current_responses, source_addr)
+                logger.debug(f"📡 Periodic TCP Response for {source_addr}, PyRI ID: {current_pyri_id}")
 
             logger.info(f"🛑 Stopped periodic TCP sending for {source_addr}")
             self.tcp_senders.pop(source_addr, None)
@@ -266,9 +269,12 @@ class VideoProcessor:
                 # 프레임 분석 수행
                 responses = self.process_frame(frame, source_addr)
                 
-                # 최신 responses 업데이트
+                # 최신 responses 업데이트 (pyri_id도 함께 저장)
                 with self.responses_lock:
-                    self.latest_responses[source_addr] = responses
+                    self.latest_responses[source_addr] = {
+                        "pyri_id": pyri_id,
+                        "data": responses
+                    }
 
                 # TCP 주기적 전송이 실행 중이 아니면 시작
                 self.send_periodic_tcp(pyri_id, source_addr)
