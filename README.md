@@ -101,6 +101,7 @@
 <img width="660" alt="image" src="https://github.com/user-attachments/assets/94ea6444-b20b-4293-bc3f-4e110c9409d9" />
 
 ## 04-3. 딥러닝
+<img width="660" alt="image" src="https://github.com/user-attachments/assets/83d34b8c-1193-40e2-a17a-b58923d1308e" />
 
 # 05. 결론
 ## 05-1. 테스트 결과
