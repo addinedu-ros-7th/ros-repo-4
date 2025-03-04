@@ -84,6 +84,10 @@
 <img src="https://github.com/user-attachments/assets/e85b5ff4-65ba-47b7-96a9-80e9f4b3af32" width="300" height="200">
 
 ## 03-5. 화재 확산 차단
+<img src="https://github.com/user-attachments/assets/3e6235cc-66f6-471b-afe0-e55856d3a41b" width="300" height="200">
+<img src="https://github.com/user-attachments/assets/f97e71ed-bf9d-49ae-b1f9-3fbc63761db6" width="300" height="200">
+<img src="https://github.com/user-attachments/assets/ff4ddf63-019d-4fa0-b3cd-308cee3ff480" width="300" height="200">
+
 
 # 04. 핵심 기술
 ## 04-1. 최적 경로 생성
