@@ -79,14 +79,14 @@
 <img src="https://github.com/user-attachments/assets/e7d03ff8-2ba3-4baa-b951-e5d4996fccf6" width="300" height="400">
 
 ## 03-4. 장애물 대응
-<img src="https://github.com/user-attachments/assets/f1bdb5ef-c359-4982-bc69-d9159d780491" width="200" height="200">
-<img src="https://github.com/user-attachments/assets/ec4802f4-3ab4-42fe-ad4a-57080ea4488e" width="200" height="200">
-<img src="https://github.com/user-attachments/assets/e85b5ff4-65ba-47b7-96a9-80e9f4b3af32" width="200" height="200">
+<img src="https://github.com/user-attachments/assets/f1bdb5ef-c359-4982-bc69-d9159d780491" width="250" height="200">
+<img src="https://github.com/user-attachments/assets/ec4802f4-3ab4-42fe-ad4a-57080ea4488e" width="250" height="200">
+<img src="https://github.com/user-attachments/assets/e85b5ff4-65ba-47b7-96a9-80e9f4b3af32" width="250" height="200">
 
 ## 03-5. 화재 확산 차단
-<img src="https://github.com/user-attachments/assets/3e6235cc-66f6-471b-afe0-e55856d3a41b" width="200" height="200">
-<img src="https://github.com/user-attachments/assets/f97e71ed-bf9d-49ae-b1f9-3fbc63761db6" width="200" height="200">
-<img src="https://github.com/user-attachments/assets/ff4ddf63-019d-4fa0-b3cd-308cee3ff480" width="200" height="200">
+<img src="https://github.com/user-attachments/assets/3e6235cc-66f6-471b-afe0-e55856d3a41b" width="250" height="200">
+<img src="https://github.com/user-attachments/assets/f97e71ed-bf9d-49ae-b1f9-3fbc63761db6" width="250" height="200">
+<img src="https://github.com/user-attachments/assets/ff4ddf63-019d-4fa0-b3cd-308cee3ff480" width="250" height="200">
 
 
 # 04. 핵심 기술
